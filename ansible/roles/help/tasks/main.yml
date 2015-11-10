@@ -1,0 +1,13 @@
+---
+- name: Create help
+  template:
+    src: "help.txt.j2"
+    dest: "{{ home_location }}/opennet_help.txt"
+    mode: 0444
+  tags: help
+- name: Display OpenNET help message
+  command: "cat {{ home_location }}/opennet_help.txt"
+  register: help_result
+  tags: help
+- debug: msg="{{ help_result.stdout }}"
+  tags: help
